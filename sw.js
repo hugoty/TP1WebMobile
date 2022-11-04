@@ -13,14 +13,13 @@ self.addEventListener("install", (e) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then(function (response) {
-      // Cache hit - return response
-      if (response) {
+
+        if (response) {
         return response;
       }
 
-      // IMPORTANT: Cloner la requête.
-      // Une requete est un flux et est à consommation unique
-      // Il est donc nécessaire de copier la requete pour pouvoir l'utiliser et la servir
+      // Cloner la requête.
+      
       var fetchRequest = event.request.clone();
 
       return fetch(fetchRequest).then(function (response) {
@@ -28,7 +27,7 @@ self.addEventListener("fetch", (event) => {
           return response;
         }
 
-        // IMPORTANT: Même constat qu'au dessus, mais pour la mettre en cache
+        //mettre en cache
         var responseToCache = response.clone();
 
         caches.open(staticCacheName).then(function (cache) {
@@ -41,7 +40,7 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-// supprimer caches
+//supprimer caches
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {
