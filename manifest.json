@@ -1,0 +1,16 @@
+{
+    "name": "What Watch",
+    "short_name": "WW",
+    "start_url": "/index.html",
+    "orientation": "portrait-primary",
+    "background_color": "white",
+    "theme_color": "white",
+     "display": "standalone",
+    
+    "icons": [
+      {
+        "src": "./icon/internet_web_engine_search_website_icon_228014.ico",
+        "type": "image/ico"
+      }
+    ]
+  }
